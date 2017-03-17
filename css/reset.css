@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/*CSS Document*/
+h3,p,body,li,ul{
+  margin: 0;
+  padding:0;
+}
+t{
+  margin:0;
+  padding:0;
+}
+body{
+  margin: 0;
+  font-size: 12px;
+}
+img{
+  border:none;
+}
+li{
+  list-style:none;
+}
+input,select,textarea{
+  outline:none;
+  border:none;
+  background: none;
+}
+textarea{
+  resize: none;
+}
+a{
+  text-decoration:none;
+  color: #656565;
+}
+
+/*清除浮动*/
+.clearfix:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.clearfix{
+  zoom:1;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+
+.img-small{
+  height: 16px;
+  width: 16px;
+}
+.img-middle{
+  height: 32px;
+  width: 32px;
+}
