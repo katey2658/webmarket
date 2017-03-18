@@ -512,6 +512,18 @@ shopTit{
   float: left;
   width: 50%;
 }
+.vertical li{
+  width: auto;
+  float: none;
+  padding-left: 8px;
+}
+.vertical .nav_title{
+
+}
+.vertical .nav_cont h3{
+  font-family: "Microsoft YaHei","微软雅黑";
+  font-size: 14px;
+}
 
 /*标题*/
 .products_title{
@@ -530,10 +542,19 @@ shopTit{
   height: 285px;
   float: left;
   text-align: center;
+  position: relative;
 }
 
 .item_cont{
   padding:0 10px;
+}
+.hot{
+  width: 122px;
+  height: 52px;
+  background: url(../img/icon/hot.svg)left top no-repeat;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .item a{
@@ -573,4 +594,383 @@ shopTit{
   height: 16px;
   display: inline-block;
   background: url(../img/icon/starno.svg) left top no-repeat;
+}
+
+/*筛选*/
+.screeing_box{
+
+}
+
+.screeing{
+  border-bottom: 1px solid #CCC;
+}
+
+.screeing dt{
+  width: 74px;
+  text-align: right;
+  line-height: 32px;
+  float: left;
+  margin-right: 42px;
+}
+.limit{
+  width: 55px;
+  float: left;
+  line-height: 32px;
+}
+
+.limit .active{
+  background-color: #1D7AD9;
+  color: #FFF;
+}
+.screeing a{
+  padding:2px;
+}
+
+.screeing_list{
+  line-height: 32px;
+  width: 626px;
+  float: left;
+}
+
+.screeing_list li{
+  width: 20%;
+  float: left;
+}
+
+.screen_more{
+  border: 1px solid #CCC;
+  height: 23px;
+  margin-top: 4px;
+  float: left;
+  background: url(../img/icon/downssm.svg) 92% center no-repeat;
+  padding-right: 20px;
+  padding-left: 11px;
+  margin-right: 10px;
+}
+
+.addInfo{
+  height: 31px;
+  border: 1px solid #CCC;
+  background-color: #f5f5f5;
+}
+
+.address{
+  float: left;
+}
+.address .add_text{
+  float: left;
+  line-height: 31px;
+  padding-left: 12px;
+  padding-right: 6px;
+}
+
+.addInfo .select{
+  margin-top: 4px;
+}
+
+.screen_text{
+  line-height: 31px;
+  padding-right: 80px;
+}
+.check{
+  position: relative;
+  top: -1px;
+  _top:4px;
+}
+
+.check input,.check label{
+  vertical-align: middle;
+}
+.shop_number{
+  position:relative;
+  _top: 4px;
+}
+.shop_number em{
+  color:#f00;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.screen_text span{
+  vertical-align: middle;
+}
+
+.addCar{
+  border:1px solid #999;
+  height: 22px;
+  display: inline-block;
+  padding: 0 6px 0 23px;
+  background:url(../img/icon/shopcar-fill.svg) 6px  center no-repeat;
+}
+.screening_list_more{
+  padding-left: 0.5%;
+}
+.screening_list_more .item{
+  width: 33.3%;
+}
+/*Page*/
+.page{
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.page a{
+  height: 24px;
+  display: inline;
+  line-height: 24px;
+  border: 1px solid #ccc;
+  padding:0 12px;
+  margin: 0 2;
+}
+.hl{
+  display: inline-block;
+  padding:0 2px;
+}
+.morePage{
+  margin-left: 14px;
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+}
+
+.pageNum{
+  width: 29px;
+  padding:0 3px;
+  border: 1px solid #ccc;
+  height: 24px;
+  line-height: 24px\9;
+  text-align: center;
+  margin-left: 4px;
+}
+.page_btn{
+  width: 44px;
+  height: 24px;
+  line-height: 24px\9;
+  background-color: #e8e8e8;
+  border: 1px solid #ccc'
+}
+.ye{
+  padding: 0 8px 0 6px;
+}
+
+.page a,
+.page span,
+.page input{
+  vertical-align: middle;
+  position: relative;
+}
+
+
+/*组件*/
+.select{
+  border: 1px solid #999;
+  height: 22px;
+  line-height: 22px;
+  float: left;
+  background-color: #FFF;
+  padding-left: 10px;
+  padding-right: 20px;
+  position: relative;
+  z-index: 4;
+}
+.select h3{
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.select span{
+  position:absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 20px;
+  background: url(../img/icon/downblue.svg) center center no-repeat;
+}
+
+.show_select{
+  position: absolute;
+  left: -1px;
+  top: 22px;
+  background-color: #fff;
+  width: 100%;
+  border:1px solid #999;
+  display: none;
+}
+
+.show_select li{
+  padding-left: 10px;
+}
+
+
+/*商品介绍*/
+.gray{
+  background-color: #f0f0f0;
+}
+/*位置*/
+.userPosition{
+  font-family: Verdana;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+.userPosition em,
+.userPosition a,
+.userPosition span,
+.userPosition strong{
+    font-size: 12px;
+}
+.userPosition a:hover{
+  text-decoration: underline;
+}
+.userPosition em{
+  font-style: normal;
+}
+
+.description_info{
+  background-color: #FFF;
+}
+.description{
+  width: 1px solid #ccc;
+}
+.description .leftArea{
+  width: 309px;
+}
+.description .rightArea{
+  width: 688px;
+  border-left: 1px solid #ccc;
+}
+/*图片展示*/
+.description_imgs .big{
+  height: 340px;
+  text-align: center;
+}
+.sm_imgList{
+  padding-left: 1px;
+  width: 265px;
+  margin:0 auto;
+}
+.sm_imgList li{
+  float: left;
+  margin-left: -1px;
+}
+.sm_imgList img{
+  border: 1px solid #ccc;
+}
+.sm_imgList .active{
+  border: 1px solid #317EE7;
+  position: relative;
+}
+.des_content{
+  padding:10px;
+}
+
+.des_content h3{
+  font:bold 16px/22px "Microsoft YaHei","微软雅黑";
+  padding:13px 25px;
+}
+
+.des_content .dl{
+  margin-bottom: 8px;
+}
+.des_content .dt{
+  width: 75px;
+  float: left;
+  color: #666;
+  text-indent: 17px;
+  line-height: 25px;
+}
+
+.des_content .dd{
+  padding-left: 75px;
+}
+
+.des_money{
+  font-size: 18px;
+  color: #F30;
+  font-family: Verdana;
+}
+.des_money em{
+  font-style: normal;
+  font-size: 12px;
+}
+
+/*换购*/
+.hg{
+  padding-top: 4px;
+  display: inline-block;
+}
+.hg_icon{
+  width: 55px;
+  height: 18px;
+  line-height: 18px;
+  display: inline-block;
+  background: url(../img/icon/hq_big.svg)left top no-repeat;
+  color: #fff;
+  font-style: normal;
+  text-indent: 16px;
+  margin-right: 10px;
+}
+
+.des_position{
+  background-color: #f2f2f2;
+  padding:12px 0;
+}
+.theGoods{
+  line-height: 24px;
+  padding-left: 10px;
+}
+
+.des_content .colorSelect{
+  line-height: 35px;
+}
+.des_item{
+  color: #666;
+  padding:9px 10px;
+  border:1px solid #CCC;
+  float: left;
+  color: #333;
+  margin-right: 10px;
+}
+
+.des_item_active{
+  border-color: #317EE7;;
+  color: #333;
+}
+
+.des_item_sm{
+  padding:3px 7px;
+  margin-bottom: 8px
+}
+.des_select_more{
+  line-height: 55px;
+}
+
+/*数量*/
+.des_number{
+  width: 82px;
+  border: 1px solid #B2B2B2;
+  height: 32px;
+}
+.des_number div{
+  height: 100%;
+  float: left;
+}
+
+.reduction,.plus{
+  width: 15px;
+  background-color: #eee;
+  text-align: center;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.des_input{
+  width: 48px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.des_input input{
+  width: 100%;
+  height: 100%;
+  line-height: 31px\9;
 }

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*CSS Document*/
-h3,p,body,li,ul{
+h3,p,body,li,ul,dl,dd,dt,i{
   margin: 0;
   padding:0;
 }
