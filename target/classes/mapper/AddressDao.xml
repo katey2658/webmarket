@@ -1,0 +1,31 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.katey268.web.dao.AddressDao">
+
+    <insert id="insertAddress" parameterType="Address">
+        INSERT  INTO address(user_id,consignee_name,contract_tel,geocode_id,address)
+        VALUE (#{userId},#{consigneeName},#{contractTel},#{geocodeId},#{address,jdbcType=VARCHAR})
+    </insert>
+    <select id="queryAllByUserId" resultType="Address">
+        SELECT a.address_id,a.user_id,a.consignee_name,a.contract_tel,a.geocode_id,a.address,
+        g.geocode "geocode.geocode",
+        g.province_code "geocode.province_code",
+        g.city_code "geocode.city_code",
+        g.district_code "geocode.district_code",
+        g.block_code "geocode.block_code",
+        g.geo_name "geocode.geo_name"
+        FROM address a
+        INNER JOIN geocode g
+        ON a.geocode_id=g.geocode
+        WHERE a.user_id=#{userId}
+        limit #{offset},#{limit}
+    </select>
+    <update id="updateAddress" parameterType="Address">
+        UPDATE address
+        SET consignee_name=#{consigneeName},
+        contract_tel=#{contractTel},geocode_id=#{geocodeId},address=#{address}
+        WHERE address_id=#{addressId}
+    </update>
+
+</mapper>

@@ -1,0 +1,106 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.katey268.web.dao.ActivityDao">
+    <insert id="insertActivity" parameterType="Activity">
+        INSERT INTO activity(activity_title,activity_desc,activity_public,activity_count,
+        start_time,end_time)
+        VALUE (#{activityTitle},#{activityDesc},#{activityPublic},#{activityCount},#{startTime},#{endTime});
+    </insert>
+
+    <select id="queryById" resultType="Activity">
+          SELECT
+          a.activity_id,a.activity_title,a.activity_desc,a.activity_public,a.activity_count,a.start_time,a.end_time,
+          p.participartor_id "participartor.participartor_id",
+          p.activity_id "participartor.activity_id",
+          p.user_id "participartor.user_id",
+          p.product_id "participartor.product_id",
+          p.image "participartor.image",
+          p.vote_desc "participartor.vote_desc",
+          p.count "participartor.count"
+          FROM activity a
+          INNER JOIN participartor p
+          ON p.activity_id=a.activity
+          WHERE activity_id=#{activityId}
+    </select>
+
+    <select id="queryAll" resultType="Activity">
+          SELECT a.activity_id,a.activity_title,a.activity_desc,a.activity_public,a.activity_count,a.start_time,a.end_time,
+          p.participartor_id "participartor.participartor_id",
+          p.activity_id "participartor.activity_id",
+          p.user_id "participartor.user_id",
+          p.product_id "participartor.product_id",
+          p.image "participartor.image",
+          p.vote_desc "participartor.vote_desc",
+          p.count "participartor.count"
+          FROM activity a
+          INNER JOIN participartor p
+          ON p.activity_id=a.activity
+          limit #{offset},#{limit}
+    </select>
+
+    <select id="queryAllStartBeforeTime" resultType="Activity">
+          SELECT a.activity_id,a.activity_title,a.activity_desc,a.activity_public,a.activity_count,a.start_time,a.end_time,
+          p.participartor_id "participartor.participartor_id",
+          p.activity_id "participartor.activity_id",
+          p.user_id "participartor.user_id",
+          p.product_id "participartor.product_id",
+          p.image "participartor.image",
+          p.vote_desc "participartor.vote_desc",
+          p.count "participartor.count"
+          FROM activity a
+          INNER JOIN participartor p
+          ON p.activity_id=a.activity
+          WHERE now() <![CDATA[< ]]> a.start_time
+          AND  #{time}>a.start_time
+          limit #{offset},#{limit}
+    </select>
+    <select id="queryAllBeforeEndTime" resultType="Activity">
+          SELECT a.activity_id,a.activity_title,a.activity_desc,a.activity_public,a.activity_count,a.start_time,a.end_time,
+          p.participartor_id "participartor.participartor_id",
+          p.activity_id "participartor.activity_id",
+          p.user_id "participartor.user_id",
+          p.product_id "participartor.product_id",
+          p.image "participartor.image",
+          p.vote_desc "participartor.vote_desc",
+          p.count "participartor.count"
+          FROM activity a
+          INNER JOIN participartor p
+          ON p.activity_id=a.activity
+          WHERE now() > a.end_time
+          limit #{offset},#{limit}
+    </select>
+
+    <select id="queryAllAfterStartedAndNotEnd" resultType="Activity">
+          SELECT a.activity_id,a.activity_title,a.activity_desc,a.activity_public,a.activity_count,a.start_time,a.end_time,
+          p.participartor_id "participartor.participartor_id",
+          p.activity_id "participartor.activity_id",
+          p.user_id "participartor.user_id",
+          p.product_id "participartor.product_id",
+          p.image "participartor.image",
+          p.vote_desc "participartor.vote_desc",
+          p.count "participartor.count"
+          FROM activity a
+          INNER JOIN participartor p
+          ON p.activity_id=a.activity
+          WHERE now() <![CDATA[< ]]> a.start_time
+          AND now() > a.end_time
+          limit #{offset},#{limit}
+    </select>
+
+    <select id="queAllEnded" resultType="Activity">
+          SELECT a.activity_id,a.activity_title,a.activity_desc,a.activity_public,a.activity_count,a.start_time,a.end_time,
+          p.participartor_id "participartor.participartor_id",
+          p.activity_id "participartor.activity_id",
+          p.user_id "participartor.user_id",
+          p.product_id "participartor.product_id",
+          p.image "participartor.image",
+          p.vote_desc "participartor.vote_desc",
+          p.count "participartor.count"
+          FROM activity a
+          INNER JOIN participartor p
+          ON p.activity_id=a.activity
+          WHERE now() <![CDATA[< ]]> a.end_time
+          limit #{offset},#{limit}
+    </select>
+</mapper>

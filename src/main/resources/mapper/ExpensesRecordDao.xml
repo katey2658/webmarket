@@ -1,0 +1,46 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.katey268.web.dao.ExpensesRecordDao">
+    <insert id="insertExpensesRecord" parameterType="ExpensesRecord">
+        INSERT INTO  expenses_record(exp_id,user_id,product_id,num,price,sale,
+        discount,total,address_id,express_code)
+        VALUE (#{expId},#{userId},#{productId},#{num},#{price},#{sale},
+        #{discount},#{total},#{addressId},#{expressCode})
+    </insert>
+    <update id="updateStateByExpRecordId">
+        UPDATE expenses_record
+        SET state=#{newState}
+        WHERE exp_record_id=#{expRecordId}
+    </update>
+    <update id="updateNumByExpRecord">
+        UPDATE expenses_record
+        SET num=#{newNum}
+        WHERE exp_record_id=#{expRecordId}
+    </update>
+
+    <select id="queryAllByUserId" resultType="ExpensesRecord">
+        SELECT exp_record_id,exp_id,user_id,product_id,num,price,sale,
+        discount,total,address_id,express_code
+        FROM expenses_record
+        WHERE user_id=#{userId}
+    </select>
+    <select id="queryAllByProductId" resultType="ExpensesRecord">
+        SELECT exp_record_id,exp_id,user_id,product_id,num,price,sale,
+        discount,total,address_id,express_code
+        FROM expenses_record
+        WHERE product_id=#{productId}
+    </select>
+    <select id="queryAllByExpId" resultType="ExpensesRecord">
+        SELECT exp_record_id,exp_id,user_id,product_id,num,price,sale,
+        discount,total,address_id,express_code
+        FROM expenses_record
+        WHERE exp_id=#{expId}
+    </select>
+    <select id="queryByExpRecordId" resultType="ExpensesRecord">
+        SELECT exp_record_id,exp_id,user_id,product_id,num,price,sale,
+        discount,total,address_id,express_code
+        FROM expenses_record
+        WHERE exp_record_id=#{expRecordId}
+    </select>
+</mapper>

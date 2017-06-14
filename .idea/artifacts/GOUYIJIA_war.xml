@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="GOUYIJIA:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="GOUYIJIA.war">
+      <element id="artifact" artifact-name="GOUYIJIA:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,58 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.katey268.web.dao.ExpressDao">
+    <insert id="insertExpress" parameterType="Express">
+        INSERT INTO express(weight,price,address_id)
+        VALUE (#{weight},#{price},#{addressId})
+    </insert>
+
+    <select id="queryByExpressCode" resultMap="queryByExpressCodeResultMap">
+        select e.express_code,e.state,e.weight,e.price,e.address_id,
+        el.express_code "express_logs.express_code",
+        el.info "express_logs.info",
+        el.create_time "express_logs.create_time",
+        a.address_id,
+        a.user_id,
+        a.consignee_name,
+        a.contract_tel,
+        a.geocode_id,
+        a.address
+        FROM express e
+        INNER JOIN express_logs el
+        ON e.express_code=el.express_code
+        INNER JOIN address a
+        ON a.address_id=e.address_id
+        WHERE e.express_code=#{expressCode}
+    </select>
+    <resultMap id="queryByExpressCodeResultMap" type="Express">
+        <result property="expressCode" column="express_code"/>
+        <result property="state" column="state"/>
+        <result property="weight" column="weight"/>
+        <result property="price" column="price"/>
+        <result property="addressId" column="address_id"/>
+        <association property="address" javaType="Address">
+            <result property="addressId" column="address_id"/>
+            <result property="userId" column="userId"/>
+            <result property="consigneeName" column="consignee_name"/>
+            <result property="contractTel" column="contract_tel"/>
+            <result property="geocode_id" column="geocode_id"/>
+            <result property="address" column="address"/>
+        </association>
+        <collection property="expressLogs" javaType="ExpressLog">
+            <result property="expressCode" column="express_code"/>
+            <result property="info" column="info"/>
+            <result property="createTime" column="create_time"/>
+        </collection>
+    </resultMap>
+    <update id="updateStateByExpressCode">
+        UPDATE express
+        SET state=#{newState}
+        WHERE express_code=#{expressCode}
+    </update>
+    <update id="updateExpress">
+        UPDATE express
+        SET weight=#{weight},price=#{price},address_id=#{addressId}
+        WHERE express_code=#{expressCode}
+    </update>
+</mapper>

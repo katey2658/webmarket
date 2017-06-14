@@ -1,0 +1,15 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.katey268.web.dao.ExpressLogDao">
+    <insert id="insertExpressLog" parameterType="ExpressLog">
+        INSERT INTO express_logs(express_code,info,create_time)
+        VALUE (#{expressCode},#{info},#{createTime})
+    </insert>
+    <select id="queryAllByExpressCode" resultType="ExpressLog">
+        SELECT express_code,info,create_time
+        FROM express_logs
+        WHERE express_code=#{expressCode}
+        limit #{offset},#{limit}
+    </select>
+</mapper>

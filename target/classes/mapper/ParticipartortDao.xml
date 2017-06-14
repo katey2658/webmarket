@@ -1,0 +1,55 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.katey268.web.dao.ParticipartorDao">
+    <insert id="insertParticipartor" parameterType="Participartor">
+        INSERT INTO  participartor(activity_id,user_id,product_id,image,vote_desc)
+        VALUE (#{activityId},#{userId},#{productId},#{image},#{desc})
+    </insert>
+
+    <select id="queryAllByActivityId" resultType="Participartor">
+        SELECT participartor_id,activity_id,user_id,product_id,image,vote_desc,count
+        FROM participartor
+        WHERE activity_id=#{activityId}
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="queryAllActivityIdsByUserId" resultType="Integer">
+        SELECT activity_id
+        FROM participartor
+        WHERE user_id=#{userId}
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="queryAllActivityIdsByProductId" resultType="Integer">
+        SELECT activity_id
+        FROM participartor
+        WHERE product_id=#{productId}
+        limit #{offset},#{limit}
+    </select>
+
+    <update id="updateUserImage">
+        UPDATE participartor
+        SET image=#{newImage}
+        WHERE participartor_id=#{participartorId}
+    </update>
+
+    <update id="updateDesc">
+        UPDATE participartor
+        SET vote_desc=#{newDesc}
+        WHERE participartor_id=#{participartorId}
+    </update>
+
+    <update id="increaseCount">
+        UPDATE participartor
+        SET count=count +1
+        WHERE participartor_id=#{participartorId}
+    </update>
+
+    <update id="increaseCountNum">
+        UPDATE participartor
+        SET count=count +#{num}
+        WHERE participartor_id=#{participartorId}
+    </update>
+
+</mapper>

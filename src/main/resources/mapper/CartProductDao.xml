@@ -1,0 +1,43 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.katey268.web.dao.CartProductDao">
+
+    <insert id="insertCartProduct">
+
+    </insert>
+
+    <insert id="batchInsertCartProduct" parameterType="java.util.List">
+        INSERT INTO cart_product(user_id,product_id,num,address_id)
+        VALUES
+        <foreach collection="productList" item="cp" index="index" separator="," >
+            (#{cp.userId},#{cp.productId},#{cp.num},#{cp.address})
+        </foreach>
+    </insert>
+
+    <update id="updateCartProductList">
+
+    </update>
+    <select id="queryCartProductByUserId" resultType="CartProduct">
+        SELECT cp.user_id,cp.product_id,cp.num,cp.address_id,
+        p.product_id "product.product_id",
+        p.product_type "product.product_type",
+        p.keywords "product.keywords",
+        p.product_title "product.product_title",
+        p.product_image "product_image",
+        p.product_price "product.product_price",
+        p.display_measurements "prodcut.display_measurements",
+        p.state "product.state"
+        FROM cart_product cp
+        INNER JOIN product p
+        ON  cp.product_id=p.product_id
+        WHERE cp.user_id=#{userId}
+    </select>
+
+    <delete id="deleteCartListByUserId">
+        DELETE
+        FROM cart_product
+        WHERE user_id=#{userId}
+    </delete>
+
+</mapper>
